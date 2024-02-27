@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+
 
 class AlumnoFormRequest extends FormRequest
 {
@@ -11,7 +14,6 @@ class AlumnoFormRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        //autorizamos
         return true;
     }
 
@@ -22,12 +24,12 @@ class AlumnoFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        //para validar los campos
+//        dump ($this->data );
         return [
-            'data.attributes.nombre' => 'required|min:5',
-            'data.attributes.direccion' => 'required',
-            'data.attributes.email' => 'required|email|unique:alumnos,email'
-            //
-        ];
+            "data.attributes.nombre"=>["required","min:4"],
+            "data.attributes.direccion"=>["required"],
+            "data.attributes.email"=>["required", "email", Rule::unique("alumnos", "email") ->ignore($this->alumno)]
+    ];
+
     }
 }

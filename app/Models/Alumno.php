@@ -10,5 +10,6 @@ class Alumno extends Model
 
 
     use HasFactory;
-    protected $fillable=["nombre","direccion","email"];
+
+    protected $fillable = ['nombre', 'direccion', 'email'];
 }
