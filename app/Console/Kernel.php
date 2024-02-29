@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Http\Middleware\ValidateJsonApiContentType;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,4 +25,7 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    //asociar el middleware a la ruta
+    protected $middlewareGroups = ['api'=> \App\Http\Middleware\ValidateJsonApiContentType::class];
 }

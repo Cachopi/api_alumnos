@@ -71,7 +71,7 @@ class AlumnoController extends Controller
 
 
 
-        public function update(Request $request, int $id)
+    public function update(Request $request, int $id)
     {
         $alumno = Alumno::find($id);
         if (!$alumno) {
@@ -118,11 +118,23 @@ class AlumnoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Alumno $alumno)
+    public function destroy(int $id)
     {
-        //
-
+        $alumno = Alumno::find($id);
+        if (!$alumno) {
+            return response()->json([
+                'errors' => [
+                    [
+                        'status' => '404',
+                        'title' => 'Resource Not Found',
+                        'detail' => 'The requested resource does not exist or could not be found.'
+                    ]
+                ]
+            ], 404);
+        }
         $alumno->delete();
-        return response()->json(null, 204);
+        return response()->json(null,204);
+        //No devuelv econtenido
+        return response()->noContent();
     }
 }

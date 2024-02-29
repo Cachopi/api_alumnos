@@ -16,18 +16,15 @@ class ValidateJsonApiContentType
 
     public function handle(Request $request, Closure $next): Response
     {
-        // No se han cumplido las validaciones, devuelve error
-        if (strcasecmp($request->header('accept'), 'application/vnd.api+json') !== 0) {
+        if ($request->header('accept') != 'application/vnd.api+json') {
             return response()->json([
-                "errors" => [
-                    "status" => 406,
-                    "title" => "Not Acceptable",
-                    "details" => "Content File not specified"
+                "errors"=>[
+                    "status"=>406,
+                    "title"=>"Not Accetable",
+                    "deatails"=>"Content File not specifed"
                 ]
-            ], 406);
+            ],406);
         }
-
-        // Devuelve la respuesta con normalidad
         return $next($request);
     }
 }
