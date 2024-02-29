@@ -452,7 +452,7 @@ Esta acción se utiliza para actualizar un recurso existente en la base de datos
     Este método se utiliza para actualizar completamente un recurso o crearlo si no existe. 
 * **PATCH**
 
-    EsteEste método se utiliza para realizar una actualización parcial de un recurso.
+    Este método se utiliza para realizar una actualización parcial de un recurso.
 
 ```php
  public function update(Request $request, int $id)
