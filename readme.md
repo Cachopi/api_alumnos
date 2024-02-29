@@ -106,6 +106,14 @@ En el fichero api.php
 
 ```
 
+**Ruta no exite**
+
+```php
+//si una ruta no existe utilizo el metodo fallback 
+Route::fallback(function(){
+   return response()->json(['mensaje'=>'ruta no encontrada'],404); 
+});
+```
 
 
 
